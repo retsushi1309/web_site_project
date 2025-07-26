@@ -1,0 +1,28 @@
+# templates/contact/email/user_auto_reply.txt
+
+{{ contact.name }}様
+
+この度はお問い合わせいただき、誠にありがとうございます。
+下記の内容でお問い合わせを受け付けいたしました。
+
+内容を確認後、担当者よりご連絡させていただきますので、
+今しばらくお待ちいただけますようお願い申し上げます。
+
+--- お問い合わせ内容 ---
+お名前: {{ contact.name }}
+メールアドレス: {{ contact.email }}
+{% if contact.phone %}電話番号: {{ contact.phone }}{% endif %}
+件名: {{ contact.subject }}
+ご相談内容の種類: {{ contact.get_inquiry_type_display }}
+ご希望の連絡方法: {{ contact.get_contact_method_display }}
+お問い合わせ内容:
+{{ contact.message }}
+
+お問い合わせ日時: {{ contact.created_at|date:"Y年m月d日 H:i" }}
+-----------------------
+
+今後ともよろしくお願いいたします。
+
+Praxis Web
+[あなたの会社のURL]
+[あなたの会社の電話番号など]

@@ -1,0 +1,19 @@
+# templates/contact/email/admin_notification.txt
+
+新しいお問い合わせがありました。
+
+--- お問い合わせ詳細 ---
+お名前: {{ contact.name }}
+メールアドレス: {{ contact.email }}
+{% if contact.phone %}電話番号: {{ contact.phone }}{% endif %}
+件名: {{ contact.subject }}
+ご相談内容の種類: {{ contact.get_inquiry_type_display }}
+ご希望の連絡方法: {{ contact.get_contact_method_display }}
+お問い合わせ内容:
+{{ contact.message }}
+
+お問い合わせ日時: {{ contact.created_at|date:"Y年m月d日 H:i" }}
+-----------------------
+
+管理画面で詳細を確認し、ご返信をお願いいたします。
+{{ request.build_absolute_uri }}{% url 'admin:contact_contact_change' contact.pk %}/

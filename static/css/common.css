@@ -1,0 +1,231 @@
+/* common.css */
+
+/* ベースカラー定義 */
+:root {
+  --color-navy-bright: #2a4d7a; /* 明るめの紺色 */
+  --color-red-button: #e74c3c; /* 赤いボタンの色 */
+  --color-gray-card: #f5f5f5; /* カードの背景色 */
+  --color-text-dark: #333333; /* 通常の文字色 */
+  --color-white: #ffffff; /* 白 */
+}
+
+/* Custom Styles - 全体共通 */
+body {
+  background-color: var(--color-white); /* 全体を白ベースに */
+  color: var(--color-text-dark); /* 他の文字は黒に */
+}
+
+/* ヘッダーのスタイル */
+.wix-header {
+  background-color: var(--color-navy-bright); /* ヘッダー背景を明るめの紺色に */
+  position: relative;
+  overflow: hidden;
+  height: 100vh; /* index.htmlのデフォルト */
+}
+/* about.htmlではHTML側で height を上書きしているため、ここは汎用的な記述とする */
+
+.wix-header .header-bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4; /* 画像の透明度を調整 */
+}
+.wix-header .header-content-wrapper {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.wix-header .logo-text,
+.wix-header .main-nav a,
+.wix-header .main-nav button {
+  color: var(--color-white); /* ロゴとメニュー文字は白に */
+}
+.wix-header .main-nav a:hover {
+  color: rgba(255, 255, 255, 0.8); /* ホバーで少し透明度を下げる */
+}
+.wix-header .button-primary {
+  background-color: var(--color-red-button);
+  color: var(--color-navy-bright);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.wix-header .button-primary:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--color-navy-bright);
+}
+
+/* ボディ全体のタイトル説明セクション */
+.wix-body-title-section {
+    background-color: var(--color-navy-bright);
+    color: var(--color-white);
+    padding: 4rem 1rem;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.wix-body-title-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.wix-body-title-section p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* カードのスタイル調整 (共通部分) */
+.wix-card {
+  background-color: var(--color-gray-card);
+  box-shadow: none;
+  border: 1px solid #e0e0e0;
+}
+.wix-card h2 {
+  color: var(--color-navy-bright);
+  border-color: #e0e0e0;
+}
+.wix-card p, .wix-card li {
+  color: var(--color-text-dark);
+}
+.wix-card .accent-icon {
+    color: var(--color-navy-bright);
+}
+.wix-card .detail-link {
+    color: var(--color-red-button);
+    font-weight: 600;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+}
+.wix-card .detail-link:hover {
+    text-decoration: underline;
+}
+
+/* お問い合わせセクションのボタン */
+.wix-contact-section {
+    background-color: var(--color-navy-bright);
+    color: var(--color-white);
+    padding: 2.5rem; /* パディングを調整 */
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+.wix-contact-button {
+    background-color: var(--color-red-button);
+    color: var(--color-white);
+    transition: background-color 0.3s ease;
+}
+.wix-contact-button:hover {
+    background-color: #c0392b;
+}
+
+/* フッターのスタイル */
+.wix-footer {
+    background-color: var(--color-navy-bright);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 4rem 1rem;
+}
+.wix-footer h3 {
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+.wix-footer a {
+    color: rgba(255, 255, 255, 0.8);
+}
+.wix-footer a:hover {
+    color: var(--color-white);
+    text-decoration: underline;
+}
+.wix-footer .copyright {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+/* about.css (または common.css の末尾) */
+
+/* モバイル用ナビゲーションの初期状態（非表示） */
+.main-nav {
+    /* Tailwindのhiddenクラスがdisplay: none;を設定しているので、モバイルではそれを上書き */
+    display: none;
+    position: absolute;
+    top: 96px; /* ヘッダーの下に配置 */
+    left: 0;
+    width: 100%;
+    background-color: var(--color-navy-bright); /* ヘッダーと同じ背景色 */
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 99; /* 他の要素より手前に表示 */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* アニメーションを追加 */
+    transform: translateY(-10px); /* 最初は少し上にずらしておく */
+    opacity: 0; /* 最初は透明 */
+    pointer-events: none; /* クリックイベントを無効にする */
+}
+
+/* メニューが開いたときの状態 */
+.main-nav.is-open {
+    display: block; /* 表示 */
+    transform: translateY(0); /* 通常の位置に戻す */
+    opacity: 1; /* 不透明にする */
+    pointer-events: auto; /* クリックイベントを有効にする */
+}
+
+/* モバイルナビゲーション内のリストとリンクのスタイル */
+.main-nav ul {
+    flex-direction: column; /* 縦並びにする */
+    align-items: center; /* 中央揃え */
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav ul li {
+    width: 100%;
+    text-align: center;
+}
+
+.main-nav ul li a {
+    display: block; /* リンク全体をクリック可能に */
+    padding: 0.75rem 1rem;
+    font-size: 1.125rem; /* text-lg */
+    color: var(--color-white);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 「お問い合わせ」ボタンのモバイル表示を調整 */
+.main-nav ul li .button-primary {
+    display: inline-block; /* ボタンとして表示 */
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* medium (md) 以上の画面サイズでは、Tailwindのmd:blockが適用されるため、上記の.main-navのスタイルは上書きされ、flexコンテナとして表示される */
+/* md:hiddenを上書きしてdisplay: none;にする必要はない */
+
+/* header-content-wrapper の flex-grow を削除しないとナビゲーションが広がらない場合があります */
+/* header-content-wrapper は flex-direction: column; でしたが、ナビゲーションをヘッダーの下に配置するためには、相対的に配置された子要素として扱えるように調整が必要です。 */
+/* あるいは、ナビゲーションをヘッダーの外に出して、独立した固定要素として扱うことも考えられますが、今回はヘッダーの子要素として調整します。 */
+/* そのためには、ヘッダーのflex-directionをrowに戻すか、ナビゲーションをposition: fixed; で配置するのが簡単です。*/
+/* ここでは、既存の構造を活かしつつ、ナビゲーションをposition: absolute; で配置し、ヘッダーの高さを考慮して表示されるようにします。 */
+
+/* @media (min-width: 768px) {
+    .main-nav {
+        display: flex !important;
+        position: static;
+        padding: 0;
+        box-shadow: none;
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .main-nav ul {
+        flex-direction: row;
+    }
+    .main-nav ul li a {
+        padding: 0;
+    }
+} */
+/* index.html のみで使用するスタイルは common.css には含めません */
+/* 例: .wix-hero-card は index.html の style.css に残します */

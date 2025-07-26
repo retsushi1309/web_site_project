@@ -1,0 +1,245 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webサイトを作るか悩んでいる方へ|一緒に考えます｜[Praxis]</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href={% static '/css/worry.css' %}>
+  
+</head>
+<body class="font-sans">
+  <header class="main-header" style="height: 450px;">
+    <img src={% static '/images/help.jpg' %} alt="Header Background" class="header-bg-image">
+    <div class="header-content-wrapper">
+      <div class="container flex justify-between items-center py-6 px-8">
+        <div class="logo-area">
+          <a href="index.html" class="logo-text">Praxis</a>
+        </div>
+        <nav id="mainNavigation" class="main-nav">
+          <ul class="flex space-x-8">
+            <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+            <li><a href="https://praxisweb.work/" class="nav-link"></a>近日公開</li>
+            <li><a href="{% url 'worry' %}" class="nav-link">よくあるご質問</a></li>
+            <li><a href="{% url 'flow' %}" class="nav-link">制作・開発の流れ</a></li>
+            <li><a href="{% url 'contact:contact_form' %}" class="button-primary">お問い合わせ</a></li>
+          </ul>
+        </nav>
+        <button id="hamburgerButton" class="menu-toggle" aria-expanded="false" aria-controls="mainNavigation">
+          &#9776;
+        </button>
+      </div>
+      <div class="flex-grow"></div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+    <section class="section-intro fade-in-section">
+      <div class="container text-center">
+        <h2>よくあるご質問</h2>
+        <p>
+          Webサイト制作をご検討中の皆様が抱える、よくある疑問や不安についてお答えします。<br>
+          費用、制作期間、納品後のサポート、そして個人事業主へのご依頼に関する疑問を解消し、<br>
+          安心してお任せいただけるよう、丁寧にご説明いたします。
+        </p>
+      </div>
+    </section>
+
+    <div class="container py-16">
+      <div class="faq-item-container fade-in-section">
+        <img src={% static '/images/money.png' %} alt="費用イメージイラスト" class="faq-image">
+        <div class="faq-card">
+          <h3 class="faq-question">Q. 費用はどれくらいかかりますか？</h3>
+          <div class="faq-answer">
+            <p>
+              ご依頼内容によって大きく異なりますが、簡易な業務管理システム・予約システムなどのWebアプリケーション開発は30万円〜、要件が複雑なものは100万円を超える場合もあります。
+            </p>
+            <p>
+              ご予算に応じた段階的な開発（フェーズ分け）も可能です。初回のヒアリング後に詳細なお見積もりを無料でご提示いたします。<br>
+              ※LP・ホームページ制作は5万円〜（1ページ程度）も対応しておりますが、こちらはシンプルな構成が前提です。
+            </p>
+            <!--<p class="mt-6 text-center">
+              <a href="contact.html" class="contact-button">
+                個別相談はこちら
+              </a>
+            </p>-->
+          </div>
+        </div>
+      </div>
+      <hr class="section-divider">
+
+      <div class="faq-item-container reverse-layout fade-in-section">
+        <img src={% static '/images/calender.png' %} alt="制作期間イメージイラスト" class="faq-image">
+        <div class="faq-card">
+          <h3 class="faq-question">Q. 制作期間はどれくらい？</h3>
+          <div class="faq-answer">
+            <p>
+              一般的な業務用Webシステム開発では、要件定義から納品までおよそ2〜3ヶ月が目安となります。<br>
+              内容によっては、さらに短縮・延長される場合もあります。<br>
+              仕様が明確で開発ボリュームが少ない場合は、1ヶ月前後での納品実績もございます。<br>
+              なお、LPや簡易なホームページのみであれば1〜3週間程度での制作も可能です。
+            </p>
+            <!--<p class="mt-6 text-center">
+              <a href="contact.html" class="contact-button">
+                個別相談はこちら
+              </a>
+            </p>-->
+          </div>
+        </div>
+      </div>
+      <hr class="section-divider">
+
+      <div class="faq-item-container fade-in-section">
+        <img src={% static '/images/system.png' %} alt="メンテナンス・サポートイメージイラスト" class="faq-image">
+        <div class="faq-card">
+          <h3 class="faq-question">Q. 完成後のメンテナンスやサポートは？</h3>
+          <div class="faq-answer">
+            <p>
+              開発完了後、1ヶ月の無償サポート期間を設けており、軽微な修正・バグ対応に無料で対応いたします。
+            </p>
+            <p>
+              その後は、ご希望に応じて**保守契約（月額1〜3万円目安）**を結ぶことで、機能追加・不具合対応・サーバー管理などを継続してサポートいたします。<br>
+              内容に応じて個別にご提案いたしますので、まずはご相談ください。
+            </p>
+            <!--<p class="mt-6 text-center">
+              <a href="contact.html" class="contact-button">
+                個別相談はこちら
+              </a>
+            </p>-->
+          </div>
+        </div>
+      </div>
+      <hr class="section-divider">
+
+      <div class="faq-item-container reverse-layout fade-in-section">
+        <img src={% static '/images/contract.png' %} alt="個人事業主への依頼イメージイラスト" class="faq-image">
+        <div class="faq-card">
+          <h3 class="faq-question">Q. 個人事業主に依頼して大丈夫？</h3>
+          <div class="faq-answer">
+            <p>
+              ご安心ください。業務開始前には、秘密保持契約（NDA）や業務委託契約書を交わし、責任の所在を明確にいたします。<br>
+              ご希望があれば、成果物の著作権や納期・支払い条件なども契約書内でしっかりと定義しますので、法人様との取引にも対応可能です。
+            </p>
+             <!-- <p class="mt-6 text-center">
+              <a href="contact.html" class="contact-button">
+                個別相談はこちら
+              </a>
+            </p> -->
+          </div>
+        </div>
+      </div>
+      <hr class="section-divider">
+
+      <div class="faq-item-container fade-in-section">
+        <img src={% static 'images/pay.png' %} alt="追加費用イメージイラスト" class="faq-image">
+        <div class="faq-card">
+          <h3 class="faq-question">Q. 途中で追加費用が発生しないか不安…</h3>
+          <div class="faq-answer">
+            <p>
+              仕様変更や機能追加などで追加費用が発生する場合は、必ず事前に内容と金額をご説明し、了承を得てから進行いたします。<br>
+              「いつの間にか費用が増えていた…」ということがないよう、明確かつ丁寧な説明を心がけております。
+            </p>
+            <!--<p class="mt-6 text-center">
+              <a href="contact.html" class="contact-button">
+                個別相談はこちら
+              </a>
+            </p>-->
+          </div>
+        </div>
+      </div>
+      <hr class="section-divider">
+
+      <div class="faq-item-container reverse-layout fade-in-section">
+        <img src={% static '/images/study.png' %} alt="パソコンスキルイメージイラスト" class="faq-image">
+        <div class="faq-card">
+          <h3 class="faq-question">Q. パソコンに詳しくないけど大丈夫？</h3>
+          <div class="faq-answer">
+            <p>
+              もちろん大丈夫です。専門用語を使わず、やさしい言葉で丁寧にご説明いたします。<br>
+              また、ドメイン取得・サーバー契約・運用方法なども一括でご案内可能ですので、初めての方でも安心してご依頼いただけます。
+            </p>
+            <!--<p class="mt-6 text-center">
+              <a href="contact.html" class="contact-button">
+                個別相談はこちら
+              </a>
+            </p>-->
+          </div>
+        </div>
+      </div>
+      <section class="contact-section text-center fade-in-section">
+      <div class="container">
+        <h2>お問い合わせ</h2>
+        <p>
+          Webサイト制作に関するご相談やご質問がございましたら、<br>お気軽にお問い合わせください。
+        </p>
+        <a href="contact.html" class="contact-button">
+          お問い合わせはこちら
+        </a>
+      </div>
+    </section>
+    </div>
+  </main>
+
+  <footer class="main-footer fade-in-section">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h3 class="footer-heading">Praxisについて</h3>
+        <p>
+          事業内容 :<br>ホームページ制作、Webアプリケーション開発、保守・運用、マーケティング支援<br>
+          <br>
+          代表者 :後藤田 烈志<br>
+          メールアドレス :praxisweb365@gmail.com
+        </p>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">最近の更新</h3>
+        <ul class="footer-list">
+          <li>
+            <a href="#" class="footer-link"> <span class="text-xs text-opacity-70">2025.07.10</span><br>
+              Webサイト制作における対話の重要性について
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer-link">
+              <span class="text-xs text-opacity-70">2025.06.25</span><br>
+              レスポンシブデザインの新たなトレンド
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer-link">
+              <span class="text-xs text-opacity-70">2025.06.01</span><br>
+              お客様の声ページを更新しました
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">サイトマップ</h3>
+        <ul class="footer-list">
+          <li><a href="{% url 'home' %}" class="footer-link">TOP</a></li>
+          <li><a href="https://praxisweb.work/" class="nav-link"></a>近日公開</li>
+          <li><a href="{% url 'worry' %}" class="footer-link">よくあるご質問</a></li>
+          <li><a href="{% url 'flow' %}" class="footer-link">Webサイト制作の流れ</a></li>
+          <li><a href="{% url 'contact:contact_form' %}" class="footer-link">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">小話</h3>
+        <p>
+          Web制作は、まるでパズルを組み立てるようなもの。<br>
+          一つ一つのピース（想い、デザイン、コード）が合わさって、<br>
+          初めて美しい全体像が現れます。あなたのピースも、ぜひお聞かせください。
+        </p>
+        <p class="text-sm text-opacity-70 mt-4">
+          <small>✨ クールなWebサイトで未来を創造しませんか？</small>
+        </p>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Praxis Web制作 All Rights Reserved.
+    </div>
+  </footer>
+  <script src="{% static 'js/script.js' %}" defer></script>
+</body>
+</html>

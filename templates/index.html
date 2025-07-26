@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Praxis Web - Webアプリケーション開発・システム運用パートナー</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href={% static '/css/style.css' %}>
+</head>
+<body class="font-sans">
+  <header class="main-header">
+    <img src={% static '/images/buridge.jpg' %}  alt="Header Background" class="header-bg-image">
+
+    <div class="header-content-wrapper">
+      <div class="container flex justify-between items-center py-6 px-8">
+        <div class="logo-area">
+          <a href="/" ass="logo-text">Praxis Web</a>
+        </div>
+        <nav id="mainNavigation" class="main-nav">
+          <ul class="flex space-x-8">
+            <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+            <li><a href="https://praxisweb.work/" class="nav-link"></a>近日公開</li>
+            <li><a href="{% url 'worry' %}" class="nav-link">よくあるご質問</a></li>
+            <li><a href="{% url 'flow' %}" class="nav-link">制作・開発の流れ</a></li>
+            <li><a href="{% url 'contact:contact_form' %}" class="button-primary">お問い合わせ</a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle"> &#9776; </button>
+      </div>
+
+      <div class="hero-card fade-in-section">
+        <h1 class="hero-title">Webアプリケーション開発<br>システム開発</h1>
+        <p class="hero-subtitle">企画・制作・運用・マーケティングまで、すべてワンストップで対応</p>
+      </div>
+
+      <div class="flex-grow"></div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+    <section class="section-intro fade-in-section">
+      <div class="container text-center">
+        <h2>事業内容</h2>
+        <p>中小企業・個人事業主様のビジネスの課題をITで解決する、Webアプリケーション開発・システム運用の専門家です。業務効率化、売上向上、顧客の体験の改善など、お客様の「こんなことできたら」をオーダーメイドのシステムで実現します。</p>
+      </div>
+    </section>
+
+    <div class="container grid-cards fade-in-section">
+      <section class="info-card">
+        <div class="card-image-container">
+          <img src={% static 'images/coding.png' %} alt="密度の高いサービス" class="card-image">
+        </div>
+        <div>
+          <h2 class="card-title">Webアプリケーション開発</h2>
+          <ul class="card-list">
+            <li>✔️ 顧客管理システム</li>
+            <li>✔️ オンライン予約・イベント管理システム</li>
+            <li>✔️ 社内向け業務報告・申請システム</li>
+            <li>✔️ 特定の業務に特化したオーダーメイドツール</li>
+          </ul>
+        </div>
+        <div class="text-right">
+          <a href="https://praxisweb.work/" class="detail-link">近日公開 →</a>
+        </div>
+      </section>
+
+      <section class="info-card">
+        <div class="card-image-container">
+          <img src={% static 'images/web_site.png' %} alt="向いている方" class="card-image">
+        </div>
+        <div>
+          <h2 class="card-title">ホームページ・LP制作</h2>
+          <ul class="card-list">
+            <li>✔️ オリジナルデザイン対応</li>
+            <li>✔️ スマホ・タブレット最適化</li>
+            <li>✔️ SEOを意識した構成設計</li>
+            <li>✔️ 公開後の運用サポート</li>
+          </ul>
+        </div>
+        <div class="text-right">
+          <a href="https://praxisweb.work/" class="detail-link">近日公開 →</a>
+        </div>
+      </section>
+
+      <section class="info-card">
+        <div class="card-image-container">
+          <img src= {% static 'images/serch.png' %} alt="Web制作の不安" class="card-image">
+        </div>
+        <div>
+          <h2 class="card-title">こんな不安ありませんか？</h2>
+          <ul class="card-list icon-list">
+            <li><span class="accent-icon">✔️</span>「費用はどれくらいかかるの？」</li>
+            <li><span class="accent-icon">✔️</span>「制作期間はどれくらい？」</li>
+            <li><span class="accent-icon">✔️</span>「完成後のメンテナンスやサポートは？」</li>
+            <li><span class="accent-icon">✔️</span>「個人事業主に依頼して大丈夫？」</li>
+            <li><span class="accent-icon">✔️</span>「途中で追加費用が発生しないか不安…」</li>
+            <li><span class="accent-icon">✔️</span>「パソコンに詳しくないけど大丈夫？」</li>
+          </ul>
+        </div>
+        <div class="text-right">
+          <a href="{% url 'worry' %}" class="detail-link">よくあるご質問 →</a>
+        </div>
+      </section>
+
+      <section class="info-card">
+        <div class="card-image-container">
+          <img src={% static 'images/work_flow.png' %} alt="スピーディな制作フロー" class="card-image">
+        </div>
+        <div>
+          <h2 class="card-title">開発・制作の流れ</h2>
+          <ol class="card-ordered-list">
+            <li>お問い合わせ</li>
+            <li>無料相談でヒヤリング・お見積もり</li>
+            <li>ご契約、企画・デザイン</li>
+            <li>制作・開発</li>
+            <li>テスト・修正</li>
+            <li>公開・運用開始。<br>最短ルートで高品質なサイトをお届けします。</li>
+          </ol>
+        </div>
+        <div class="text-right">
+          <a href="{% url 'flow' %}" class="detail-link">詳細を見る →</a>
+        </div>
+      </section>
+    </div>
+
+    <section class="contact-section rounded-xl fade-in-section">
+      <h2 class="section-title">お問い合わせ・相談</h2>
+      <p>「依頼するかわからないけど、ちょっと話してみたい」<br>そんな気持ちでも大歓迎です。</p>
+      <a href="contact.html" class="contact-button">まずは相談してみる</a>
+    </section>
+  </main>
+
+  <footer class="main-footer fade-in-section">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h3 class="footer-heading">Praxis Webについて</h3>
+        <p>
+          事業内容 :<br>ホームページ制作、Webアプリケーション開発、保守・運用、マーケティング支援<br>
+          <br>
+          代表者 :後藤田 烈志<br>
+          メールアドレス :praxisweb365@gmail.com
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-heading">最近の更新</h3>
+        <ul class="footer-list">
+          <li>
+            <a href="#" class="footer-link"> <span class="text-xs text-opacity-70">2025.07.10</span><br>
+              Webサイト制作における対話の重要性について
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer-link">
+              <span class="text-xs text-opacity-70">2025.06.25</span><br>
+              レスポンシブデザインの新たなトレンド
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer-link">
+              <span class="text-xs text-opacity-70">2025.06.01</span><br>
+              お客様の声ページを更新しました
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-heading">サイトマップ</h3>
+        <ul class="footer-list">
+          <li><a href="{% url 'home' %}" class="footer-link">TOP</a></li>
+          <li><a href="https://praxisweb.work/" class="nav-link"></a>近日公開</li>
+          <li><a href="{% url 'worry' %}" class="footer-link">よくあるご質問</a></li>
+          <li><a href="{% url 'flow' %}" class="footer-link">Webサイト制作の流れ</a></li>
+          <li><a href="{% url 'contact:contact_form' %}" class="footer-link">お問い合わせ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-heading">小話</h3>
+        <p>
+          Web制作は、まるでパズルを組み立てるようなもの。<br>
+          一つ一つのピース（想い、デザイン、コード）が合わさって、<br>
+          初めて美しい全体像が現れます。あなたのピースも、ぜひお聞かせください。
+        </p>
+        <p class="text-sm text-opacity-70 mt-4">
+          <small>✨ クールなWebサイトで未来を創造しませんか？</small>
+        </p>
+      </div>
+    </div>
+
+    <div class="copyright">
+      &copy; 2025 Praxis Web制作 All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="{% static 'js/script.js' %}" ></script>
+</body>
+</html>
