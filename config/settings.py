@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-9$0^2cr00bw+(v%5gmkjq5st^()(r^t4f(+(-c2fko&$7g3x50
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['160.251.181.156', 'praxisweb.jp', 'www.praxisweb.jp']
+ALLOWED_HOSTS = ['160.251.181.156', 'praxisweb.jp', 'www.praxisweb.jp']
 
 
 # Application definition
