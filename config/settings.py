@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-9$0^2cr00bw+(v%5gmkjq5st^()(r^t4f(+(-c2fko&$7g3x50
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['160.251.181.156', 'praxisweb.jp', 'www.praxisweb.jp']
 
 
 # Application definition
@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'contact_db',  # 使用するデータベース名
-        'USER': 'retsushi',    # MySQLのユーザー名
+        'USER': 'retsushi_website',    # MySQLのユーザー名
         'PASSWORD': 'Retsushi.0718', # MySQLのパスワード
         'HOST': 'localhost',          # MySQLが動作しているホスト (通常はlocalhost)
         'PORT': '3306',               # MySQLのポート (デフォルトは3306)
