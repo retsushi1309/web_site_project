@@ -1,0 +1,641 @@
+/* style.css */
+
+/* ==================================== */
+/* 1. Global Variables & Base Styles    */
+/* ==================================== */
+:root {
+  --color-navy-bright: #2a4d7a; /* 明るめの紺色 */
+  --color-red-button: #e74c3c; /* 赤いボタンの色 */
+  --color-gray-card: #f5f5f5; /* カードの背景色 */
+  --color-text-dark: #333333; /* 通常の文字色 */
+  --color-white: #ffffff; /* 白 */
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* ==================================== */
+/* 2. Header Styles                     */
+/* ==================================== */
+.main-header {
+  background-color: var(--color-navy-bright);
+  position: relative;
+  overflow: hidden;
+  height: 100vh; /* Default height for index.html */
+  display: flex; /* For flexible content alignment */
+  flex-direction: column;
+}
+/* Adjust height for specific pages if needed, e.g., worry.html */
+.main-header[style*="height"] {
+  height: auto; /* Allow HTML style attribute to override */
+}
+
+.main-header .header-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.main-header .header-content-wrapper {
+  position: relative;
+  z-index: 10;
+  height: 100%; /* Take full height of header */
+  display: flex;
+  flex-direction: column;
+}
+
+.main-header .logo-area {
+  z-index: 11; /* Ensure logo is above nav on mobile */
+}
+
+.main-header .logo-text {
+  color: var(--color-white);
+  font-size: 2.5rem; /* Adjusted for consistency */
+  font-weight: 800; /* Extra bold */
+  letter-spacing: 0.05em; /* Tracking wider */
+  transition: color 0.3s ease;
+}
+
+.main-header .logo-text:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.main-header .nav-link {
+  color: var(--color-white);
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 500; /* medium */
+  transition: color 0.3s ease;
+}
+
+.main-header .nav-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.main-header .button-primary {
+  background-color: var(--color-red-button);
+  color: var(--color-white); /* Changed to white for better contrast */
+  padding: 0.75rem 1.5rem; /* px-6 py-2 */
+  border-radius: 9999px; /* rounded-full */
+  font-weight: 600; /* font-semibold */
+  font-size: 1.125rem; /* text-lg */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-header .button-primary:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+
+/* ==================================== */
+/* 3. Hero Section Styles (for index.html) */
+/* ==================================== */
+.hero-card {
+  position: absolute;
+  bottom: 4rem;
+  right: 100px;
+  background-color: var(--color-white);
+  padding: 3.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  z-index: 20;
+}
+.hero-card .hero-title {
+  color: var(--color-navy-bright);
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+.hero-card .hero-subtitle {
+  color: var(--color-text-dark);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  max-width: 32rem; /* max-w-2xl */
+}
+
+/* ==================================== */
+/* 4. Mobile Navigation                 */
+/* ==================================== */
+.menu-toggle {
+  display: block; /* Hamburger icon visible on mobile */
+  color: var(--color-white);
+  font-size: 2.5rem; /* Larger icon */
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 100; /* Ensure it's clickable */
+}
+
+.main-nav {
+  display: none; /* Hidden by default for mobile */
+}
+
+@media (max-width: 767px) { /* Tailwind's md breakpoint is 768px */
+  .main-nav {
+    position: absolute;
+    top: 96px; /* Below the header, adjust if header height changes */
+    left: 0;
+    width: 100%;
+    background-color: var(--color-navy-bright);
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999; /* Below hamburger, above content */
+  }
+
+  .main-nav.is-active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    display: flex; /* Override display: none when active */
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .main-nav ul li {
+    margin: 0.75rem 0;
+  }
+
+  .main-nav ul li a,
+  .main-nav ul li .button-primary {
+    padding: 0.5rem 0;
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none; /* Hide hamburger icon on desktop */
+  }
+  .main-nav {
+    display: flex !important; /* Always show nav on desktop */
+    position: static;
+    padding: 0;
+    box-shadow: none;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .main-nav ul {
+    flex-direction: row;
+  }
+  .main-nav ul li a {
+    padding: 0;
+  }
+}
+
+/* ==================================== */
+/* 5. Section Introduction Styles       */
+/* ==================================== */
+.section-intro {
+  background-color: var(--color-navy-bright);
+  color: var(--color-white);
+  padding: 4rem 1rem;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.section-intro h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.section-intro p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ==================================== */
+/* 6. General Card Styles               */
+/* ==================================== */
+.wix-card {
+  background-color: var(--color-gray-card);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* subtle shadow */
+  border: 1px solid #e0e0e0;
+  padding: 2.5rem; /* Consistent padding */
+  border-radius: 0.75rem; /* Rounded corners */
+}
+.wix-card h2 {
+  color: var(--color-navy-bright);
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.wix-card p, .wix-card li {
+  color: var(--color-text-dark);
+}
+.wix-card .accent-icon {
+  color: var(--color-navy-bright);
+}
+.wix-card .detail-link {
+  color: var(--color-red-button);
+  font-weight: 600;
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
+}
+.wix-card .detail-link:hover {
+  text-decoration: underline;
+}
+
+.wix-card .card-image-container img {
+  border-radius: 0.5rem; /* Slightly rounded images */
+}
+
+/* ==================================== */
+/* 7. FAQ Section Styles (from worry.html) */
+/* ==================================== */
+.faq-item-container {
+  display: flex;
+  flex-direction: column; /* Mobile: column (image on top) */
+  align-items: center;
+  margin-bottom: 4rem; /* Spacing between FAQ items */
+  gap: 2rem; /* Gap between image and card */
+}
+
+@media (min-width: 768px) { /* Desktop: flex (side-by-side) */
+  .faq-item-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 4rem; /* Desktop gap */
+  }
+  .faq-item-container.reverse-layout { /* Alternating layout */
+    flex-direction: row-reverse;
+  }
+}
+
+.faq-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+@media (min-width: 768px) {
+  .faq-image {
+    width: 50%;
+  }
+}
+
+.faq-card {
+  background-color: var(--color-gray-card);
+  padding: 2.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-width: 600px;
+  width: 100%;
+}
+
+.faq-question {
+  color: var(--color-navy-bright);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+
+.faq-answer {
+  color: var(--color-text-dark);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+.faq-answer ul {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+.faq-answer li {
+  margin-bottom: 0.5rem;
+}
+.faq-answer strong {
+  color: var(--color-navy-bright);
+}
+.faq-answer p {
+  margin-bottom: 1rem;
+}
+.faq-answer p:last-child {
+  margin-bottom: 0; /* Remove bottom margin for the last paragraph in answer */
+}
+
+.section-divider {
+  border-top: 1px solid var(--color-gray-card); /* Lighter divider */
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+/* ==================================== */
+/* 8. Timeline Section Styles (from flow.html) */
+/* ==================================== */
+.timeline-section {
+    background-color: var(--color-gray-card);
+    padding: 4rem 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+/* タイムラインの線（モバイル用） */
+.timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -1.5rem;
+    width: 2px;
+    height: 3rem;
+    background-color: var(--color-navy-bright);
+}
+
+.timeline-number-wrapper { /* 新しいラッパーを追加して番号の背景を調整 */
+    z-index: 10;
+    background-color: var(--color-gray-card);
+    padding: 0.5rem;
+    border-radius: 50%;
+    border: 2px solid var(--color-gray-card);
+}
+
+.timeline-number {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: var(--color-navy-bright);
+    color: var(--color-white);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.timeline-content {
+    background-color: var(--color-white);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    max-width: 400px;
+    width: 100%;
+}
+
+.timeline-content h3 {
+    color: var(--color-navy-bright);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+.timeline-duration { /* 期間目安のスタイル */
+    font-weight: 700;
+    color: var(--color-red-button);
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+}
+
+
+/* デスクトップ用タイムライン（Flexboxで横並び） */
+@media (min-width: 768px) {
+    .timeline-section {
+        padding: 4rem;
+    }
+
+    .timeline-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    .timeline-grid::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: var(--color-navy-bright);
+        transform: translateX(-50%);
+    }
+
+    .timeline-item {
+        flex-direction: row;
+        text-align: left;
+        margin-bottom: 4rem;
+        width: 100%;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .timeline-item:nth-child(even) { /* 偶数番目は左右反転 */
+        flex-direction: row-reverse;
+    }
+
+    .timeline-item:not(:last-child)::after {
+        display: none; /* デスクトップでは個別線を非表示 */
+    }
+
+    .timeline-number-wrapper {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+    }
+
+    .timeline-content {
+        width: 45%;
+        max-width: none;
+        position: relative;
+    }
+
+    /* 左右の接続線 */
+    .timeline-item .timeline-content::before {
+        content: '';
+        position: absolute;
+        top: 1.5rem;
+        width: 2.5rem;
+        height: 2px;
+        background-color: var(--color-navy-bright);
+        z-index: 5;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::before { /* 奇数番目（左側） */
+        right: -2.5rem;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::before { /* 偶数番目（右側） */
+        left: -2.5rem;
+    }
+}
+
+/* ==================================== */
+/* 9. Contact Section                   */
+/* ==================================== */
+.contact-section {
+  background-color: var(--color-navy-bright);
+  color: var(--color-white);
+  padding: 2.5rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  border-radius: 0.75rem; /* Consistent with other rounded elements */
+  text-align: center;
+}
+.contact-section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.contact-section p {
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+}
+.contact-button {
+  background-color: var(--color-red-button);
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem; /* py-3 px-6 */
+  border-radius: 9999px; /* rounded-full */
+  font-weight: 600;
+  display: inline-block; /* For proper padding and alignment */
+  transition: background-color 0.3s ease;
+}
+.contact-button:hover {
+  background-color: #c0392b;
+}
+
+
+/* ==================================== */
+/* 10. Footer Styles                     */
+/* ==================================== */
+.main-footer {
+  background-color: var(--color-navy-bright);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 4rem 1rem;
+}
+.main-footer .footer-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3rem;
+}
+@media (min-width: 768px) {
+  .main-footer .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .main-footer .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.main-footer .footer-col {
+  margin-bottom: 1.5rem;
+}
+
+.main-footer .footer-heading {
+  color: var(--color-white);
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600; /* font-semibold */
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+.main-footer .footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-footer .footer-list li {
+  margin-bottom: 0.5rem;
+}
+
+.main-footer .footer-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.main-footer .footer-link:hover {
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
+.main-footer .copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 3rem;
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.875rem; /* text-sm */
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* ==================================== */
+/* 11. Animation Styles                 */
+/* ==================================== */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==================================== */
+/* 12. Responsive Adjustments           */
+/* ==================================== */
+@media (max-width: 767px) {
+  .hero-card {
+    position: static;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: none;
+    padding: 2.5rem;
+    margin-top: 350px; /* To prevent overlap with header content */
+  }
+  .hero-card .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-card .hero-subtitle {
+    font-size: 1.25rem;
+  }
+}

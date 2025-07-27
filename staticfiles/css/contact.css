@@ -1,0 +1,483 @@
+/* style.css */
+
+/* ==================================== */
+/* 1. Global Variables & Base Styles    */
+/* ==================================== */
+:root {
+  --color-navy-bright: #2a4d7a; /* 明るめの紺色 */
+  --color-red-button: #e74c3c; /* 赤いボタンの色 */
+  --color-gray-card: #f5f5f5; /* カードの背景色 */
+  --color-text-dark: #333333; /* 通常の文字色 */
+  --color-white: #ffffff; /* 白 */
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* ==================================== */
+/* 2. Header Styles                     */
+/* ==================================== */
+.main-header {
+  background-color: var(--color-navy-bright);
+  position: relative;
+  overflow: hidden;
+  height: 100vh; /* Default height for index.html */
+  display: flex; /* For flexible content alignment */
+  flex-direction: column;
+}
+/* Adjust height for specific pages if needed, e.g., worry.html */
+.main-header[style*="height"] {
+  height: auto; /* Allow HTML style attribute to override */
+}
+
+.main-header .header-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.main-header .header-content-wrapper {
+  position: relative;
+  z-index: 10;
+  height: 100%; /* Take full height of header */
+  display: flex;
+  flex-direction: column;
+}
+
+.main-header .logo-area {
+  z-index: 11; /* Ensure logo is above nav on mobile */
+}
+
+.main-header .logo-text {
+  color: var(--color-white);
+  font-size: 2.5rem; /* Adjusted for consistency */
+  font-weight: 800; /* Extra bold */
+  letter-spacing: 0.05em; /* Tracking wider */
+  transition: color 0.3s ease;
+}
+
+.main-header .logo-text:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.main-header .nav-link {
+  color: var(--color-white);
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 500; /* medium */
+  transition: color 0.3s ease;
+}
+
+.main-header .nav-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.main-header .button-primary {
+  background-color: var(--color-red-button);
+  color: var(--color-white); /* Changed to white for better contrast */
+  padding: 0.75rem 1.5rem; /* px-6 py-2 */
+  border-radius: 9999px; /* rounded-full */
+  font-weight: 600; /* font-semibold */
+  font-size: 1.125rem; /* text-lg */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-header .button-primary:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+
+/* ==================================== */
+/* 3. Hero Section Styles (for index.html) */
+/* ==================================== */
+.hero-card {
+  position: absolute;
+  bottom: 4rem;
+  right: 100px;
+  background-color: var(--color-white);
+  padding: 3.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  z-index: 20;
+}
+.hero-card .hero-title {
+  color: var(--color-navy-bright);
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+.hero-card .hero-subtitle {
+  color: var(--color-text-dark);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  max-width: 32rem; /* max-w-2xl */
+}
+
+/* ==================================== */
+/* 4. Mobile Navigation                 */
+/* ==================================== */
+.menu-toggle {
+  display: block; /* Hamburger icon visible on mobile */
+  color: var(--color-white);
+  font-size: 2.5rem; /* Larger icon */
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 100; /* Ensure it's clickable */
+}
+
+.main-nav {
+  display: none; /* Hidden by default for mobile */
+}
+
+@media (max-width: 767px) { /* Tailwind's md breakpoint is 768px */
+  .main-nav {
+    position: absolute;
+    top: 96px; /* Below the header, adjust if header height changes */
+    left: 0;
+    width: 100%;
+    background-color: var(--color-navy-bright);
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999; /* Below hamburger, above content */
+  }
+
+  .main-nav.is-active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    display: flex; /* Override display: none when active */
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .main-nav ul li {
+    margin: 0.75rem 0;
+  }
+
+  .main-nav ul li a,
+  .main-nav ul li .button-primary {
+    padding: 0.5rem 0;
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none; /* Hide hamburger icon on desktop */
+  }
+  .main-nav {
+    display: flex !important; /* Always show nav on desktop */
+    position: static;
+    padding: 0;
+    box-shadow: none;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .main-nav ul {
+    flex-direction: row;
+  }
+  .main-nav ul li a {
+    padding: 0;
+  }
+}
+
+/* ==================================== */
+/* 5. Section Introduction Styles       */
+/* ==================================== */
+.section-intro {
+  background-color: var(--color-navy-bright);
+  color: var(--color-white);
+  padding: 4rem 1rem;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.section-intro h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.section-intro p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ==================================== */
+/* 6. Contact Info Section Styles       */
+/* ==================================== */
+.contact-info-section {
+  padding: 2rem 0;
+}
+
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.contact-info-item {
+  background-color: var(--color-gray-card);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info-item .icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info-item h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-navy-bright);
+  margin-bottom: 0.5rem;
+}
+
+.contact-info-item p {
+  font-size: 1rem;
+  color: var(--color-text-dark);
+}
+
+.contact-info-item .profile-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 0.5rem;
+}
+
+/* ==================================== */
+/* 7. My Message Section Styles         */
+/* ==================================== */
+.my-message-section .wix-card {
+  padding: 2.5rem; /* Consistent padding */
+  border-radius: 0.75rem; /* Rounded corners */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* subtle shadow */
+  border: 1px solid #e0e0e0;
+}
+
+.my-message-section .wix-card p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text-dark);
+}
+
+/* ==================================== */
+/* 8. Contact Form Styles               */
+/* ==================================== */
+.contact-form-section {
+  padding: 2rem 0;
+}
+
+.contact-form {
+  background-color: var(--color-gray-card);
+  padding: 2.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--color-navy-bright);
+  margin-bottom: 0.5rem;
+}
+
+.form-group .required {
+  color: var(--color-red-button);
+  margin-left: 0.25rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  color: var(--color-text-dark);
+  background-color: var(--color-white);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--color-navy-bright);
+  box-shadow: 0 0 0 3px rgba(42, 77, 122, 0.2);
+  outline: none;
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 0.75rem;
+  min-width: 1rem; /* Ensure checkbox is visible */
+  min-height: 1rem;
+}
+
+.submit-button {
+  display: block;
+  width: auto;
+  min-width: 180px;
+  padding: 0.75rem 2rem;
+  margin: 2rem auto 0;
+  background-color: var(--color-red-button);
+  color: var(--color-white);
+  border: none;
+  border-radius: 9999px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+
+/* ==================================== */
+/* 9. Footer Styles                     */
+/* ==================================== */
+.main-footer {
+  background-color: var(--color-navy-bright);
+  color: var(--color-white);
+}
+
+.main-footer .footer-col {
+  margin-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  .main-footer .footer-col {
+    margin-bottom: 0;
+  }
+}
+
+.main-footer .footer-heading {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* font-semibold */
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+.main-footer .footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-footer .footer-list li {
+  margin-bottom: 0.5rem;
+}
+
+.main-footer .footer-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.main-footer .footer-link:hover {
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
+.main-footer .copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 3rem;
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.875rem; /* text-sm */
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* ==================================== */
+/* 10. Animation Styles                 */
+/* ==================================== */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 名刺風の会社概要カード */
+.business-card {
+  background-color: var(--color-white);
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  text-align: left;
+}
+.business-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-navy-bright);
+}
+.business-card p {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+.business-card .profile-photo {
+  float: right;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
