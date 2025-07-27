@@ -181,7 +181,7 @@ a {
 
 .card-image {
   width: 100%;
-  
+
   max-width: 400px;
   height: auto;
   border-radius: 0.75rem;
@@ -490,10 +490,10 @@ a {
   opacity: 1;
   transform: translateY(0);
 }
-@media (max-width: 375px) and (max-height: 667px) {
+@media (max-width: 400px) and (max-height: 800px) {
   .hero-card {
   position: absolute;
-  bottom: 1rem;
+  bottom: 2rem;
   right: 1rem;
   }
 }
