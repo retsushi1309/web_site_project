@@ -181,9 +181,10 @@ a {
 
 .card-image {
   width: 100%;
-  height: 21.5rem; /* h-86 / h-896 (original was inconsistent, harmonized) */
-  object-fit: cover;
-  border-radius: 0.375rem; /* rounded-md */
+  max-width: 400px;
+  height: auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .card-title {
@@ -489,12 +490,6 @@ a {
   transform: translateY(0);
 }
 @media (max-width: 375px) and (max-height: 667px) {
-  .card-image {
-    height: auto;         /* 高さを自動 */
-    max-height: none;     /* 上限を解除 */
-    object-fit: contain;  /* 画像を縮小して全体表示 */
-    background-color: #fff; /* 空白ができた場合の背景色（必要に応じて変更） */
-  }
   .hero-card {
   position: absolute;
   bottom: 1rem;
