@@ -15,7 +15,7 @@
     <div class="header-content-wrapper">
       <div class="container flex justify-between items-center py-6 px-8">
         <div class="logo-area">
-          <a href="/" ass="logo-text">Praxis Web</a>
+          <a href="{% url 'home' %}" class="logo-text">Praxis Web</a>
         </div>
         <nav id="mainNavigation" class="main-nav">
           <ul class="flex space-x-8">
@@ -127,7 +127,7 @@
     <section class="contact-section rounded-xl fade-in-section">
       <h2 class="section-title">お問い合わせ・相談</h2>
       <p>「依頼するかわからないけど、ちょっと話してみたい」<br>そんな気持ちでも大歓迎です。</p>
-      <a href="contact.html" class="contact-button">まずは相談してみる</a>
+      <a href="{% url 'contact:contact_form' %}" class="contact-button">まずは相談してみる</a>
     </section>
   </main>
 

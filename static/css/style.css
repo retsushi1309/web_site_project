@@ -68,10 +68,10 @@ a {
 
 .logo-text {
   color: var(--color-white);
-  font-size: 1.875rem; /* text-3xl */
-  font-weight: 800; /* font-extrabold */
-  letter-spacing: 0.05em; /* tracking-wider */
-  transition: colors 0.3s ease;
+  font-size: 2.5rem; /* Adjusted for consistency */
+  font-weight: 800; /* Extra bold */
+  letter-spacing: 0.05em; /* Tracking wider */
+  transition: color 0.3s ease;
 }
 
 .nav-link {

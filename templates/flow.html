@@ -14,7 +14,7 @@
     <div class="header-content-wrapper">
       <div class="container flex justify-between items-center py-6 px-8">
         <div class="logo-area">
-          <a href="index.html" class="logo-text">Praxis Web</a>
+          <a href="{% url 'home' %}" class="logo-text">Praxis Web</a>
         </div>
         <nav id="mainNavigation" class="main-nav">
           <ul class="flex space-x-8">
@@ -137,7 +137,7 @@
         <p>
           Webサイト制作に関するご相談やご質問がございましたら、<br>お気軽にお問い合わせください。
         </p>
-        <a href="contact.html" class="contact-button">
+        <a href="{% url 'contact:contact_form' %}" class="contact-button">
           お問い合わせはこちら
         </a>
       </div>
