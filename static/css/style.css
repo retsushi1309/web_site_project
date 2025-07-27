@@ -352,7 +352,11 @@ a {
     padding-left: 2rem; /* md:px-12 */
     padding-right: 2rem;
   }
-
+  .card-image {
+    height: auto;         /* 固定高さ解除 */
+    max-height: none;     /* 上限なし */
+    object-fit: contain;  /* 画像全体を表示 */
+  }
   .main-header .container {
     padding-left: 3rem; /* lg:px-16, md:px-12 */
     padding-right: 3rem;
@@ -483,4 +487,17 @@ a {
 .fade-in-section.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+@media (max-width: 375px) and (max-height: 667px) {
+  .card-image {
+    height: auto;         /* 高さを自動 */
+    max-height: none;     /* 上限を解除 */
+    object-fit: contain;  /* 画像を縮小して全体表示 */
+    background-color: #fff; /* 空白ができた場合の背景色（必要に応じて変更） */
+  }
+  .hero-card {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  }
 }
